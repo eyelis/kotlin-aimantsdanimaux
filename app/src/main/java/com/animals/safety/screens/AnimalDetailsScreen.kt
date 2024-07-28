@@ -39,6 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.animals.safety.R
 import com.animals.safety.data.Animal
+import com.animals.safety.data.AnimalData
 import com.animals.safety.data.Breed
 import com.animals.safety.ui.theme.AimantsDanimauxTheme
 import java.util.UUID
@@ -49,6 +50,7 @@ fun AnimalDetailsScreen(
   modifier: Modifier = Modifier,
   animal: Animal?,
   onBackClick: () -> Unit,
+  onEditClick: () -> Unit,
 ) {
   Scaffold(
     modifier = modifier,
@@ -78,6 +80,7 @@ fun AnimalDetailsScreen(
         ExtendedFloatingActionButton(
           onClick = {
             //TODO: à compléter
+            onEditClick()
           },
           icon = { Icon(Icons.Filled.Edit, stringResource(id = R.string.description_button_edit)) },
           text = { Text(text = stringResource(id = R.string.description_button_edit)) },
@@ -85,6 +88,8 @@ fun AnimalDetailsScreen(
         ExtendedFloatingActionButton(
           onClick = {
             //TODO: à compléter
+            AnimalData.animals.remove(animal)
+            onBackClick()
           },
           contentColor = Color.White,
           containerColor = Color.Red,

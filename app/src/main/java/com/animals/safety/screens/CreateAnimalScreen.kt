@@ -59,11 +59,11 @@ fun CreateAnimalScreen(
   val snackbarHostState = remember { SnackbarHostState() }
 
   //TODO: à compléter
-  val name = rememberSaveable { mutableStateOf("") }
-  val breed = rememberSaveable { mutableStateOf(Breed.entries[0]) }
-  val age = rememberSaveable { mutableStateOf("") }
-  val weight = rememberSaveable { mutableStateOf("") }
-  val height = rememberSaveable { mutableStateOf("") }
+  val name = rememberSaveable { mutableStateOf(animal?.name.orEmpty()) }
+  val breed = rememberSaveable { mutableStateOf(animal?.breed ?: Breed.entries[0]) }
+  val age = rememberSaveable { mutableStateOf(animal?.age?.toString() ?: "") }
+  val weight = rememberSaveable { mutableStateOf(animal?.weight?.toString() ?: "") }
+  val height = rememberSaveable { mutableStateOf(animal?.height?.toString() ?: "") }
 
   Scaffold(
     modifier = modifier,
